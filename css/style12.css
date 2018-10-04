@@ -1,0 +1,23 @@
+body{
+	margin: 90px auto;
+	font-family: sans-serif;
+}
+
+table{
+	border-collapse: separate;
+    border-spacing: 20px;
+}
+
+table tr td{
+	border: 1px solid lightgray;
+	width: 100px;
+	padding: 10px;
+}
+
+.buynow{
+	padding: 10px 20px;
+	background-color: green;
+	border: none;
+	color: #FFF;
+	cursor: pointer;
+}

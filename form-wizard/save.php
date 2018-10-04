@@ -1,0 +1,80 @@
+<?php
+$db = new PDO("mysql:host=localhost;dbname=test","root","");
+if(isset($_POST['save'])){
+    $id = uniqid();
+    $studentname = $_POST['name'];
+    $fathername=$_POST['fathername'];
+    $mothername = $_POST['mothername'];
+    $birthdate= $_POST['bday'];
+    $blood=$_POST['Blood'];
+    $nationality=$_POST['nationality'];
+    $nationalid=$_POST['nationalid'];
+    $program=$_POST['Program'];
+    $stat1 = $db->prepare("insert into personal_info values(?,?,?,?,?,?,?,?,?)");
+    $stat1->bindParam(1, $id);
+    $stat1->bindParam(2, $studentname);
+    $stat1->bindParam(3, $fathername);
+    $stat1->bindParam(4, $mothername);
+    $stat1->bindParam(5, $birthdate);
+    $stat1->bindParam(6,$blood);
+    $stat1->bindParam(7,$nationality);
+    $stat1->bindParam(8,$nationalid);
+    $stat1->bindParam(9,$program);
+    $stat1->execute();
+    $email = $_POST['email'];
+    $mobile=$_POST['mobile'];
+    $present = $_POST['present'];
+    $district= $_POST['district'];
+    $zipcode=$_POST['zipcode'];
+    $stat2 = $db->prepare("insert into contact_info values(?,?,?,?,?,?)");
+     $stat2->bindParam(1, $id);
+     $stat2->bindParam(2, $email);
+     $stat2->bindParam(3, $mobile);
+     $stat2->bindParam(4, $present);
+     $stat2->bindParam(5, $district);
+     $stat2->bindParam(6, $zipcode);
+    $stat2->execute();
+     $inst_name = $_POST['inst_name'];
+    $last_session=$_POST['last_session'];
+    $pass_year = $_POST['pass_year'];
+    $dept_name= $_POST['dept_name'];
+    $stat3 = $db->prepare("insert into basic_educational_info values(?,?,?,?,?)");
+    $stat3->bindParam(1, $id);
+    $stat3->bindParam(2, $inst_name);
+    $stat3->bindParam(3, $last_session);
+    $stat3->bindParam(4, $pass_year);
+    $stat3->bindParam(5, $dept_name);
+    $stat3->execute();
+     $sscroll = $_POST['sscroll'];
+    $pass_sscyear=$_POST['pass_sscyear'];
+    $ssc_institution = $_POST['ssc_institution'];
+    $sscgpa= $_POST['sscgpa'];
+     $hscroll = $_POST['hscroll'];
+    $pass_hscyear=$_POST['pass_hscyear'];
+    $hsc_institution = $_POST['hsc_institution'];
+    $hscgpa= $_POST['hscgpa'];
+     $bscroll = $_POST['bscroll'];
+    $pass_bscyear=$_POST['pass_bscyear'];
+    $bsc_institution = $_POST['bsc_institution'];
+    $bscgpa= $_POST['bscgpa'];
+     $stat4 = $db->prepare("insert into additional_educational_info values(?,?,?,?,?,?,?,?,?,?,?,?,? )");
+    $stat4->bindParam(1, $id);
+    $stat4->bindParam(2, $sscroll);
+    $stat4->bindParam(3, $pass_sscyear);
+    $stat4->bindParam(4, $ssc_institution);
+    $stat4->bindParam(5, $sscgpa);
+    $stat4->bindParam(6, $hscroll);
+    $stat4->bindParam(7, $pass_hscyear);
+    $stat4->bindParam(8, $hsc_institution);
+    $stat4->bindParam(9, $hscgpa);
+     $stat4->bindParam(10, $bscroll);
+    $stat4->bindParam(11, $pass_bscyear);
+    $stat4->bindParam(12, $bsc_institution);
+    $stat4->bindParam(13, $bscgpa);
+
+    $stat4->execute();
+	
+    
+    echo "data inserted successfully";
+}
+?>
